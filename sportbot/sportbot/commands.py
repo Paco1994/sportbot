@@ -6,6 +6,11 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 from pony.orm import *
 
+import livescore
+from livescore import *
+import partidosweb
+from partidosweb import elimina_tildes
+
 
 @bot.message_handler(commands=['start'])
 @db_session
@@ -32,15 +37,16 @@ def command_help(m):
         help_text += commands[i] + "\n"
     bot.send_message( cid, help_text )
 
-@bot.message_handler(commands=['setequipo'])
+@bot.message_handler(commands=['partido'])
 def command_setequipo(m):
-    equipo = m.text[10:].title()
+    equipo = m.text[9:]
     cid = m.chat.id
-    print "Añadido el equipo" + equipo
-    USERFILE = "users/" + str(cid) + ".txt"
-    f = open(USERFILE , 'a+r')
-    if equipo not in f:
-        f.write(equipo+"\n")
-    else:
-        bot.send_message(cid,"Ya tienes registrado este equipo " + equipo)
-    f.close()
+    listadoURLs = ini2urls("url.ini",0)    # Lectura de URL desde fichero de INICIO
+    keys, vlr = listadoURLs.claves_valores()  # Claves y valores
+    listadoURLs.listado()
+    ls = LiveScore(keys, vlr)
+    print (len(ls.partidos))
+    equipo=elimina_tildes(equipo,False)
+    pts = ls.buscar(equipo)
+    for pt in pts:
+        bot.send_message ( cid, str(pt) )
