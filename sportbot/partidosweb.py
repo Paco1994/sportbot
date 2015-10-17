@@ -69,5 +69,5 @@ class PartidosWeb:
         else:
             if self.res:
                 tmp += str(self.goll) + " - " + str(self.golv)
-        return tmp + " - %s" % self.estado[self.idestado]
+        return tmp + " - %s %s" % (self.estado[self.idestado], self.minuto)
 
