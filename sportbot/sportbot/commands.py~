@@ -24,7 +24,7 @@ commands = {  # command description used in the "help" command
 @db_session
 def command_start(m):
     cid = m.chat.id
-    bot.send_message(cid, "Utiliza el comando /partido [Nombre equipo] para saber el resultado de este equipo. Tu equipo por defecto es el glorioso Córdoba CF.")
+    bot.send_message("Utiliza el comando /partido [Nombre equipo] para saber el resultado de este equipo. Tu equipo por defecto es el glorioso Córdoba CF.")
     usuario = users.search_user(m.from_user, 'Cordoba')
     #base=users.search_user(m.from_user)
     #print base.id
