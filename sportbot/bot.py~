@@ -55,6 +55,7 @@ def command_start(m):
         if cid < 0:
             bot.send_message( cid, "Bienvenidos. Este grupo se ha registrado en ASL Sports Bot.")
         else:
-            bot.send_message( cid, "Bienvenido. Ya eres un usuario más de la comunidad de Tgram Agenda Bot. ¿No te sientes especial?")
+            bot.send_message( cid, "Bienvenido. Te has registrado en ASL Sports Bot. Elige tu equipo favorito.")
+			#ELEGIR EQUIPO.
 
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algún fallo.

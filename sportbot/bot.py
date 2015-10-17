@@ -59,3 +59,5 @@ def command_start(m):
 			#ELEGIR EQUIPO.
 
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algún fallo.
+while True: # Ahora le decimos al programa que no se cierre haciendo un bucle que siempre se ejecutará.
+    time.sleep(300)
