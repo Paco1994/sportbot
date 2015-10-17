@@ -13,8 +13,8 @@ def configure():
 config=configure()
 bot = telebot.TeleBot(config['telegram']['token'])
 
-from ucobot import model
-from ucobot import commands
+from sportbot import model
+from sportbot import commands
 
 def starts():
     bot.polling()

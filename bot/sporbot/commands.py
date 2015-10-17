@@ -1,5 +1,5 @@
-from ucobot import bot
-from ucobot.model import user
+from sportbot import bot
+from sportbot.model import user
 
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['help', 'start'])

@@ -11,5 +11,5 @@ vendor_dir = os.path.join(parent_dir, 'dist')
 
 sys.path.append(vendor_dir)
 
-from ucobot import bot
+from sportbot import bot
 bot.polling()

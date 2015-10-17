@@ -1,12 +1,12 @@
 from pony.orm import *
 from datetime import *
-from ucobot import config
+from sportbot import config
 
 db = Database()
 
 # Clases
 
-from ucobot.model import user
+from sportbot.model import user
 
 # Fin clases
 

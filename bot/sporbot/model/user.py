@@ -1,5 +1,5 @@
 from pony.orm import *
-from ucobot.model import db
+from sportbot.model import db
 
 class User(db.Entity):
     """Clase User.
