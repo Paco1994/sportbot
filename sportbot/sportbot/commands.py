@@ -10,6 +10,7 @@ import livescore
 from livescore import *
 import partidosweb
 from partidosweb import elimina_tildes
+import sched ,time
 
 
 @bot.message_handler(commands=['start'])
@@ -28,6 +29,22 @@ def command_eq(m):
     team = m.text[4:]
     usuario = users.search_user(m.from_user,team)
     print usuario.equipo
+
+@bot.message_handler(commands=['miequipo'])
+@db_session
+def command_miequipo(m):
+    cid = m.chat.id
+    usuario = users.usuario_equipo(m.from_user)
+    equipo = usuario.equipo
+    listadoURLs = ini2urls("sportbot/url.ini",0)    # Lectura de URL desde fichero de INICIO
+    keys, vlr = listadoURLs.claves_valores()  # Claves y valores
+    listadoURLs.listado()
+    ls = LiveScore(keys, vlr)
+    print (len(ls.partidos))
+    equipo=elimina_tildes(equipo,False)
+    pts = ls.buscar(equipo)
+    for pt in pts:
+        bot.send_message ( cid, str(pt) )
 
 @bot.message_handler(commands=['help'])
 def command_help(m):

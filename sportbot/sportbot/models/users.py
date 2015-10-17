@@ -23,3 +23,13 @@ def search_user(user, team):
         commit()
 
     return entity
+
+@db_session
+def usuario_equipo(user):
+    if select(u for u in User).filter(lambda x: x.id == user.id).exists():
+        entity = User[user.id]
+        #entity.equipo = user.equipo
+        entity.last_name = user.last_name
+    else:
+        print "na"
+    return entity
