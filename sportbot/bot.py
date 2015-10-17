@@ -15,7 +15,12 @@ bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
 local = True
 gif = "https://lachatupdate.files.wordpress.com/2015/08/547b7a894bcc7.gif"
 usuarios = [line.rstrip('\n') for line in open('sources/usuarios.txt')] #cargamos la lista de usuarios
-administrador = '43748337'
+administrador = '-24696186'
+
+commands = { # command description used in the "help" command
+ 'start': 'Empieza a usar el bot. Recibirás notificaciones globales cuando se actualice el bot.',
+ 'help': 'Muestra el menú de ayuda.'
+}
 
 def listener(messages):
     for m in messages:
@@ -57,6 +62,15 @@ def command_start(m):
         else:
             bot.send_message( cid, "Bienvenido. Te has registrado en ASL Sports Bot. Elige tu equipo favorito.")
 			#ELEGIR EQUIPO.
+
+@bot.message_handler(commands=['help'])
+def command_help(m):
+    cid = m.chat.id
+    help_text ="Estos son los comandos disponibles:\n"
+    for i in commands:
+        help_text += "/" + i + ": "
+        help_text += commands[i] + "\n"
+    bot.send_message( cid, help_text )
 
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algún fallo.
 while True: # Ahora le decimos al programa que no se cierre haciendo un bucle que siempre se ejecutará.
