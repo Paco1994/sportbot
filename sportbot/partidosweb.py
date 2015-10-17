@@ -53,6 +53,9 @@ class PartidosWeb:
         else:
             return ''
 
+    def esta_equipo(self, equipo):
+        return equipo.upper() == self.eq_local.upper() or equipo.upper() == self.eq_vis.upper()
+
     def dato(self):
         return {"idpartido": self._idpartido, "goll": self.goll,
                 "golv": self.golv, "dgol": self.goll - self.golv,

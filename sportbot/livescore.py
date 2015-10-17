@@ -60,7 +60,12 @@ class LiveScore():
                 print (p)
             except: pass
 
-
+    def buscar(self, equipo):
+        partidos_equipo = []
+        for pt in self.partidos:
+            if pt.esta_equipo(equipo):
+                partidos_equipo.append(pt)
+        return partidos_equipo
 
 class ini2urls():
     """ Recupera de ficheros INI el listado de URL a procesar """
@@ -97,4 +102,8 @@ if __name__ == '__main__':
 
     listadoURLs.listado()
     ls = LiveScore(keys, vlr)
-    ls.listadoPartidos()
+    print (len(ls.partidos))
+    pts = ls.buscar('cordoba')
+    for pt in pts:
+        print (pt)
+    # ls.listadoPartidos()
