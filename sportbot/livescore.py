@@ -24,7 +24,6 @@ conte_clases = [ "ply tright name", "ply name", "sco", "min"]
 class LiveScore():
     """ Tratamiento de URL de BetFair """
     def __init__(self, misclaves, misvalores):
-        self.partidos = []
         self.equipos = set()
         self.misclaves = misclaves
         self.misvalores = misvalores
@@ -35,11 +34,11 @@ class LiveScore():
         self.partidos_old = self.partidos
         self.partidos = []
         for k in range(0, len(self.misclaves)):
-            url = self.misvalores[k]
-            html = self._descarga(url)
+            url = misvalores[k]
+            html = self.descarga(url)
             self.ejecuta(html)
 
-    def _descarga(self, surl):
+    def descarga(self, surl):
         data, error = self.dw.gethtml(surl,'')
         return data
 
