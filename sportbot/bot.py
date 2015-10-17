@@ -44,4 +44,5 @@ bot.set_update_listener(listener) # Así, le decimos al bot que utilice como fun
 
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algún fallo.
 while True: # Ahora le decimos al programa que no se cierre haciendo un bucle que siempre se ejecutará.
+    #listadoURLs = ini2urls("sources/url.ini",0)    # Lectura de URL desde fichero de INICIO
     time.sleep(300)

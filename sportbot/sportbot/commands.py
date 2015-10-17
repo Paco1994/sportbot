@@ -41,7 +41,7 @@ def command_help(m):
 def command_setequipo(m):
     equipo = m.text[9:]
     cid = m.chat.id
-    listadoURLs = ini2urls("url.ini",0)    # Lectura de URL desde fichero de INICIO
+    listadoURLs = ini2urls("sportbot/url.ini",0)    # Lectura de URL desde fichero de INICIO
     keys, vlr = listadoURLs.claves_valores()  # Claves y valores
     listadoURLs.listado()
     ls = LiveScore(keys, vlr)
