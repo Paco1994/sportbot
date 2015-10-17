@@ -16,6 +16,7 @@ from partidosweb import elimina_tildes
 @db_session
 def command_start(m):
     cid = m.chat.id
+    bot.send_message("Utiliza el comando /partido [Nombre equipo] para saber el resultado de este equipo")
     #base=users.search_user(m.from_user)
     #print base.id
 #u"Córdoba CF"
