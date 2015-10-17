@@ -17,11 +17,8 @@ HTML = ".html"
 miVersion = "SEF LiveScore - Version 0.6.0 - 20151017"
 iniurl = "url.ini"
 
-#contenedores = [ "td", "td", "td" ]
-#conte_clases = [ "fh", "fa", "fs" ]
 contenedores = [ "div", "div", "div", "div" ]
 conte_clases = [ "ply tright name", "ply name", "sco", "min"]
-
 
 
 class LiveScore():
