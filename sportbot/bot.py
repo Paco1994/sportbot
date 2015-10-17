@@ -35,7 +35,7 @@ def listener(messages):
                 print mensaje
             else:
                 if m.text[0] == '/':
-                    mensaje = str(m.from_user.first_name) + "[" + str(cid) + "]: " + m.text 
+                    mensaje = str(m.from_user.first_name) + "[" + str(cid) + "]: " + m.text
                     f = open('sources/log.txt', 'a')
                     f.write(mensaje + "\n")
                     f.close()
@@ -54,13 +54,13 @@ def command_start(m):
         f.write( str(cid) + "\n")
         f.close()
         bot.send_message( administrador, "Se ha registrado el ID " + str(cid))
-        #USERFILE = "users/" + str(cid) + ".txt"
-        #f = open( USERFILE, 'w')
-        #f.close()
+        USERFILE = "users/" + str(cid) + ".txt"
+        f = open( USERFILE, 'w')
+        f.close()
         if cid < 0:
             bot.send_message( cid, "Bienvenidos. Este grupo se ha registrado en ASL Sports Bot.")
         else:
-            bot.send_message( cid, "Bienvenido. Te has registrado en ASL Sports Bot. Elige tu equipo favorito.")
+            bot.send_message( cid, "Bienvenido. Te has registrado en ASL Sports Bot. Elige tu equipo favorito. Puedes seleccionarlo con el comando /setequipo")
 			#ELEGIR EQUIPO.
 
 @bot.message_handler(commands=['help'])
@@ -71,6 +71,17 @@ def command_help(m):
         help_text += "/" + i + ": "
         help_text += commands[i] + "\n"
     bot.send_message( cid, help_text )
+
+@bot.message_handler(commands=['setequipo'])
+def command_setequipo(m):
+    equipo = m.text[10:]
+    cid = m.chat.id
+    print "Añadido el equipo" + equipo
+    USERFILE = "users/" + str(cid) + ".txt"
+    f = open(USERFILE , 'a')
+    f.write(equipo+"\n")
+    f.close()
+
 
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algún fallo.
 while True: # Ahora le decimos al programa que no se cierre haciendo un bucle que siempre se ejecutará.
